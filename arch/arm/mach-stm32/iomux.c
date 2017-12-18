@@ -344,6 +344,26 @@ void __init stm32_iomux_init(void)
 		gpio_dsc.pin  = 14;
 		stm32f2_gpio_config(&gpio_dsc, STM32F2_GPIO_ROLE_OUT);
 #endif /* CONFIG_GPIOLIB */
+
+#if defined(CONFIG_STM32_SPI5)
+		gpio_dsc.port = 5;	/* CLCK */
+		gpio_dsc.pin  = 7;
+		stm32f2_gpio_config(&gpio_dsc, STM32F2_GPIO_ROLE_SPI5);
+
+		gpio_dsc.port = 5;	/* DI */
+		gpio_dsc.pin  = 8;
+		stm32f2_gpio_config(&gpio_dsc, STM32F2_GPIO_ROLE_SPI5);
+
+		gpio_dsc.port = 5;	/* DO */
+		gpio_dsc.pin  = 9;
+		stm32f2_gpio_config(&gpio_dsc, STM32F2_GPIO_ROLE_SPI5);
+
+		gpio_dsc.port = 2;	/* CS */
+		gpio_dsc.pin  = 1;
+		stm32f2_gpio_config(&gpio_dsc, STM32F2_GPIO_ROLE_OUT);
+#endif
+
+
 		break;
 
 	case PLATFORM_STM32_STM3220G_EVAL:

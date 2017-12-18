@@ -257,6 +257,44 @@ void __init stm32_spi_init(void)
 	platform_device_register(&spi_stm32_dev6);
 #endif
 
+	if (p == PLATFORM_STM32_STM32429_DISCO) {
+		/*
+		 * Setup
+		 */
+#define SPI_FLASH_CS_PORT__STM32F429_DISCO_L3GD20	2	//PORTC
+#define SPI_FLASH_CS_PIN__STM32F429_DISCO_L3GD20	1	//PIN 1
+
+		static struct spi_stm32_slv 
+			spi_stm32_flash_slv__stm32f429_disco_l3gd20  = {
+			.cs_gpio = STM32_GPIO_PORTPIN2NUM(
+				     SPI_FLASH_CS_PORT__STM32F429_DISCO_L3GD20,
+				     SPI_FLASH_CS_PIN__STM32F429_DISCO_L3GD20),
+			.timeout = 3,
+		};
+		static struct spi_board_info
+		spi_stm32_gyro_info__l3gd20 = {
+			#if defined(CONFIG_SPI_SPIDEV)
+			.modalias = "spidev",
+			#endif
+			.max_speed_hz = 25000000,	//25MHz
+			.bus_num = 4, 			//SPI5
+			.chip_select = 0,		//Unique Chip Select pin number on SPI5
+			.controller_data = &spi_stm32_flash_slv__stm32f429_disco_l3gd20,
+		};
+		/*
+		 * Set up the Chip Select GPIO for the SPI Gyro
+		 */
+		gpio_direction_output(STM32_GPIO_PORTPIN2NUM(
+				       SPI_FLASH_CS_PORT__STM32F429_DISCO_L3GD20,
+				       SPI_FLASH_CS_PIN__STM32F429_DISCO_L3GD20), 1);
+		/*
+		 * Register SPI slaves
+		 */
+		spi_register_board_info(&spi_stm32_gyro_info__l3gd20,
+			sizeof(spi_stm32_gyro_info__l3gd20) / 
+			sizeof(struct spi_board_info));		
+	}
+
 	if (p == PLATFORM_STM32_STM_SOM) {
 
 		/* This assumes that there is an SPI Flash device
