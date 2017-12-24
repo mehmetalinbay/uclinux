@@ -84,9 +84,9 @@ USART Connection
 
 USART1:
 
-pin PA10 -> TXD
+pin PA9 -> TXD
 
-pin PA11 -> RXD
+pin PA10 -> RXD
 
 USART3:
 
