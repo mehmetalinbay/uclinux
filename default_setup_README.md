@@ -69,9 +69,9 @@ Sample Flash command
 	-c "reset init" \
 	-c "flash probe 0" \
 	-c "flash info 0" \
-	-c "flash write_image erase /home/ahmet/workspace/boot/u-boot-robutest/stm32429-disco/u-boot.bin 0x08000000" \
-	-c "flash write_image erase /home/ahmet/workspace/kernel/linux/arch/arm/boot/xipuImage.bin 0x08020000" \
-	-c "flash write_image erase /home/ahmet/workspace/filesys/romfs.bin 0x08120000" \
+	-c "flash write_image erase ~/workspace/boot/u-boot/stm32429-disco/u-boot.bin 0x08000000" \
+	-c "flash write_image erase ~/workspace/uclinux/arch/arm/boot/xipuImage.bin 0x08020000" \
+	-c "flash write_image erase ~/workspace/filesys/romfs.bin 0x08120000" \
 	-c "reset run" \
 	-c "shutdown"
 ```
