@@ -18,6 +18,13 @@ Folder Structure
 	mkdir workspace
 	cd workspace
 ```
+
+U-Boot --> https://github.com/vf-tech/u-boot
+
+Linux --> https://github.com/vf-tech/uclinux
+
+File System --> https://github.com/vf-tech/filesys
+
 Dependicies
 =========
 The builder requires that various tools and packages be available for use in
