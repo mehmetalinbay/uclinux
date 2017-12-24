@@ -5,6 +5,7 @@ Folder Structure
   - filesys
   - boot
   - toolchain
+  - openocd
 
 ```
 	cd home/$USER
@@ -42,3 +43,36 @@ Setup Toolchain
 ```
 * Restart Ubuntu
 * Check toolchain PATH
+
+Setup OpenOCD
+=========
+```
+	sudo apt-get install libtool automake libusb-1.0.0-dev texinfo libusb-dev
+	cd ~/workspace
+	git clone git://git.code.sf.net/p/openocd/code openocd
+	cd openocd
+	git submodule init && git submodule update && ./bootstrap && ./configure --enable-stlink  && make && sudo make install	
+	sudo cp  /usr/local/share/openocd/contrib/99-openocd.rules /etc/udev/rules.d/
+```
+Note: If you're using ST-Link v2-1 you may need to change USB VID&PID settings in stlink-v2.cfg file before make
+```
+	hla_vid_pid 0x0483 0x3748 ==> hla_vid_pid 0x0483 0x374
+```
+Note: OpenOCD rule file name (99-openocd.rules) is not fixed! Check it before copy.
+
+FLASH
+=========	
+Sample Flash command
+```	
+	openocd -f  board/stm32f429discovery.cfg \
+	-c "init" \
+	-c "reset init" \
+	-c "flash probe 0" \
+	-c "flash info 0" \
+	-c "flash write_image erase /home/ahmet/workspace/boot/u-boot-robutest/stm32429-disco/u-boot.bin 0x08000000" \
+	-c "flash write_image erase /home/ahmet/workspace/kernel/linux/arch/arm/boot/xipuImage.bin 0x08020000" \
+	-c "flash write_image erase /home/ahmet/workspace/filesys/romfs.bin 0x08120000" \
+	-c "reset run" \
+	-c "shutdown"
+```
+	
