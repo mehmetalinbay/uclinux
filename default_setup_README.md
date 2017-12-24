@@ -1,3 +1,7 @@
+OS
+=========
+We used [Ubuntu 14.04 32-Bit](http://releases.ubuntu.com/14.04/ubuntu-14.04.5-desktop-i386.iso)
+
 Folder Structure
 =========
 * /workspace
