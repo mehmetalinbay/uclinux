@@ -14,7 +14,7 @@ Download Kernel
 =========
 ```
 	cd ~/workspace
-	git clone https://github.com/mehmetalinbay/uclinux.git
+	git clone https://github.com/vf-tech/uclinux.git
 ```
 Compile 
 =========
