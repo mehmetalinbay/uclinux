@@ -79,4 +79,19 @@ Sample Flash command
 	-c "reset run" \
 	-c "shutdown"
 ```
-	
+USART Connection	
+=========
+
+USART1:
+
+pin PA10 -> TXD
+
+pin PA11 -> RXD
+
+USART3:
+
+pin PC10 -> TXD
+
+pin PC11 -> RXD
+
+If you're using ST-Link v2-1 debugger you can use debugger's Virtual UART COM port (probably /dev/ttyACMx)
