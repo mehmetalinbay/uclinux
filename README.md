@@ -27,8 +27,10 @@ or
 	cd ~/workspace/uclinux
 	cp config.malinbay .config
 ```
-Note: config.robutest is fork default
+Note: config.robutest is fork's defualt config file
+
 Note: in config.malinbay USART1 & SPI5 enabled
+
 ```
 	make menuconfig
 	make ARCH=arm CROSS_COMPILE=arm-uclinuxeabi- -j4
