@@ -19,6 +19,7 @@ Download Kernel
 Compile 
 =========
 ```
+	git checkout initial
 	cd ~/workspace/uclinux
 	cp config.robutest .config
 ```
@@ -27,7 +28,7 @@ or
 	cd ~/workspace/uclinux
 	cp config.malinbay .config
 ```
-Note: config.robutest is fork's defualt config file
+Note: config.robutest is fork's default config file
 
 Note: in config.malinbay USART1 & SPI5 enabled
 
