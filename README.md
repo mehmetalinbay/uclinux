@@ -25,6 +25,7 @@ Compile
 ```
 or
 ```
+	git checkout master
 	cd ~/workspace/uclinux
 	cp config.malinbay .config
 ```
